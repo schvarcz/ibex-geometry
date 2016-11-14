@@ -15,11 +15,22 @@ using namespace std;
 
 namespace ibex {
 
+PdcInPolygon::PdcInPolygon(vector< vector< vector<double> > > &points) : Pdc(2) {
+    ax.resize(points.size()); ay.resize(points.size()); bx.resize(points.size()); by.resize(points.size());
+    for(int i=0; i< points.size(); i++)
+    {
+        ax[i] = points[i][0][0];
+        ay[i] = points[i][0][1];
+        bx[i] = points[i][1][0];
+        by[i] = points[i][1][1];
+    }
+}
+
 PdcInPolygon::PdcInPolygon(vector<double> &_ax, vector<double> &_ay, vector<double> &_bx, vector<double> &_by) : Pdc(2),
-    		ax(_ax),
-    		ay(_ay),
-    		bx(_bx),
-    		by(_by) {
+            ax(_ax),
+            ay(_ay),
+            bx(_bx),
+            by(_by) {
 }
 
 namespace {

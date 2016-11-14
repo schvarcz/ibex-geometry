@@ -78,7 +78,8 @@ public:
      * \param ay list of y coordinate of the first point of each segment
      * \param bx list of x coordinate of the second point of each segment
      * \param by list of y coordinate of the second point of each segment
-	 */
+     */
+    SepPolygon(std::vector< std::vector< std::vector<double> > >& points);
     SepPolygon(std::vector<double>& ax, std::vector<double>& ay, std::vector<double>& bx, std::vector<double>& by);
 
 	/**
