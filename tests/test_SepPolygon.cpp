@@ -1,10 +1,10 @@
 //============================================================================
 //                                  I B E X
 // File        : TestSepPolygon.cpp
-// Author      : Benoit Desrochers
-// Copyright   : Ecole des Mines de Nantes (France)
+// Author      : Benoit Desrochers, Guilherme Schvarcz Franco
+// Copyright   : ENSTA Bretagne (France)
 // License     : See the LICENSE file
-// Created     : Jan 02, 2015
+// Created     : 2016
 //============================================================================
 
 
@@ -327,4 +327,3 @@ TEST_CASE("test_SepPolygon_07", "")
 
     CHECK(isFilesEqual(tmpname,"./setResult_07"));
 }
-
