@@ -13,7 +13,7 @@ ENDIF()
 
 # option declaration
 option(BUILD_TESTS "Build tests" ON)
-option(WITH_PYTHON "Build python module" ON)
+option(WITH_PYTHON "Build python module" OFF)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/)
 
@@ -26,6 +26,8 @@ endif()
 
 FIND_PACKAGE(IbexLib)
 if(IBEX_FOUND)
+  MESSAGE(WARNING "IBEX_INCLUDE_DIRS: ${IBEX_INCLUDE_DIRS}")
+  MESSAGE(WARNING "IBEX_LIBRARIES: ${IBEX_LIBRARIES}")
   INCLUDE_DIRECTORIES(${IBEX_INCLUDE_DIRS})
   SET(LIBS ${LIBS} ${IBEX_LIBRARIES} )
 else()

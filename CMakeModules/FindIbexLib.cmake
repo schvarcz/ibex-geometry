@@ -23,19 +23,34 @@ find_path(FILIB_INCLUDE_DIR ieee/primitive.hpp
           PATH_SUFFIXES include
           )
 
-
 find_library(IBEX_LIBRARY NAMES ibex
             HINTS ${PC_IBEX_LIBDIR} ${PC_IBEX_LIBRARY_DIRS}  ${IBEX_ROOT}
             PATH_SUFFIXES lib
 						)
-
 find_library(FILIB_LIBRARY NAMES prim
             HINTS ${PC_IBEX_LIBDIR} ${PC_IBEX_LIBRARY_DIRS}  ${IBEX_ROOT}
             PATH_SUFFIXES lib
 						)
+find_library(GAOL_LIBRARY NAMES gaol
+            HINTS ${PC_IBEX_LIBDIR} ${PC_IBEX_LIBRARY_DIRS}  ${IBEX_ROOT}
+            PATH_SUFFIXES lib lib/ibex/3rd
+						)
+find_library(GDTOA_LIBRARY NAMES gdtoa
+            HINTS ${PC_IBEX_LIBDIR} ${PC_IBEX_LIBRARY_DIRS}  ${IBEX_ROOT}
+            PATH_SUFFIXES lib lib/ibex/3rd
+						)
+find_library(ULTIM_LIBRARY NAMES ultim
+            HINTS ${PC_IBEX_LIBDIR} ${PC_IBEX_LIBRARY_DIRS}  ${IBEX_ROOT}
+            PATH_SUFFIXES lib lib/ibex/3rd
+						)
 
-set(IBEX_LIBRARIES ${IBEX_LIBRARY} ${FILIB_LIBRARY})
-set(IBEX_INCLUDE_DIRS ${IBEX_INCLUDE_DIR} ${FILIB_INCLUDE_DIR})
+if(FILIB_LIBRARY)
+	set(IBEX_LIBRARIES ${IBEX_LIBRARY} ${FILIB_LIBRARY})
+	set(IBEX_INCLUDE_DIRS ${IBEX_INCLUDE_DIR} ${IBEX_INCLUDE_DIR}/ibex ${FILIB_INCLUDE_DIR})
+else()
+	set(IBEX_LIBRARIES ${IBEX_LIBRARY} ${GAOL_LIBRARY} ${GDTOA_LIBRARY} ${ULTIM_LIBRARY})
+	set(IBEX_INCLUDE_DIRS ${IBEX_INCLUDE_DIR} ${IBEX_INCLUDE_DIR}/ibex ${IBEX_INCLUDE_DIR}/ibex/3rd)
+endif()
 
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set IBEX_FOUND to TRUE
